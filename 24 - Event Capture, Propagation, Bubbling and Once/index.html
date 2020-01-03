@@ -40,9 +40,27 @@
   }
 </style>
 
-<button></button>
+<button>I am Clickable only once!!!</button>
 <script>
+  const divs = document.querySelectorAll('div');
 
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation(); //stop bubbling
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false
+    }));
+
+  const button = document.querySelector('button');
+  // This button can be used as a checkout button in a store app
+  button.addEventListener('click', () => {
+    console.log("Click!!!");
+  }, {
+    once: true
+  });
+  
 </script>
 </body>
 </html>
