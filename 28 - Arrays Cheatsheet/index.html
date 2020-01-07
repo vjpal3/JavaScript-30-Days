@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Cheatsheet</title>
+  </head>
+  <body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+
+    <script>
+      //1. Iterate
+      const colors = ['blue', 'green', 'white'];
+      for (const color of colors) {
+        console.log(color);
+      }
+
+      for (let index = 0; index < colors.length; index++) {
+        const color = colors[index];
+        console.log(color);
+      }
+
+      colors.forEach((color, index) => {
+        console.log(color, index);
+      });
+      // 'blue', 0
+      // 'green', 1
+      // 'white', 2
+      // You cannot break array.forEach() iterating.
+
+      //2. Map
+      //array.map() creates a new mapped array, without mutating the original one.
+      const numbers = [0, 2, 4];
+      let newNumbers = numbers.map(number => number + 1);
+      console.log(newNumbers);
+
+      //Array.from() creates a new mapped array, without mutating the original one
+      // Array.from() fits better to map from an array-like object.
+      newNumbers = Array.from(numbers, number => {
+        return number * 2;
+      });
+      console.log(newNumbers);
+
+      //3. Reduce
+      // The first array item becomes the initial value if
+      // you skip the initialValue argument.
+      const sum = numbers.reduce((acc, num) => {
+        return acc + num;
+      }, 0);
+      console.log({ sum });
+
+      //4. Concat
+      const heroes = ['Batman', 'Robin'];
+      const villains = ['Joker', 'Bane'];
+      const people = ['Peter', 'Sarah', 'Bob'];
+      let everyone = heroes.concat(villains, people);
+      console.log(everyone);
+
+      //spread operator
+      // you can concat as many arrays as you need using spread operator.
+      everyone = [...heroes, ...villains];
+      console.log(everyone);
+    </script>
+  </body>
+</html>
